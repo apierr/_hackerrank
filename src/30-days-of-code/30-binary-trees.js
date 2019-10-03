@@ -39,7 +39,13 @@ function BinarySearchTree() {
     // Start of function levelOrder
     this.levelOrder = function(root) {
         // Add your code here
-
+        let queue = [root];
+        while (queue.length > 0) {
+            node = queue.pop();
+            process.stdout.write(node.data + " ");
+            if (node.left) queue.unshift(node.left);
+            if (node.right) queue.unshift(node.right);
+        }
     }; // End of function levelOrder
 } // End of function BinarySearchTree
 
