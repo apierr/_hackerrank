@@ -18,6 +18,12 @@ class NonEmptyBST<D extends Comparable> implements Tree<D>{
         left = new EmptyBST<D>();
         right = new EmptyBST<D>();
     }
+    
+    public NonEmptyBST(D elt, Tree<D> leftTree, Tree<D> rightTree) {
+        data = elt;
+        left = new EmptyBST<D>();
+        right = new EmptyBST<D>();
+    }
 
     @Override
     public boolean isEmpty() {
@@ -34,7 +40,7 @@ class NonEmptyBST<D extends Comparable> implements Tree<D>{
         if (data == elt) {
             return true;
         } else {
-            if (elt < data) {
+            if (elt.compareTo(data) < 0) {
                 return left.member(elt);
             } else {
                 return right.member(elt);
@@ -44,6 +50,14 @@ class NonEmptyBST<D extends Comparable> implements Tree<D>{
 
     @Override
     public NonEmptyBST<D> add(D elt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if ( data == elt) {
+            return this;
+        } else {
+            if (elt.compareTo(data) < 0) {
+                return new NonEmptyBST(data, left.add(elt), right);
+            } else {
+                return new NonEmptyBST(data, left, right.add(elt));
+            }
+        }
     }
 }
