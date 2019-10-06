@@ -9,29 +9,21 @@ function Solution() {
     this.removeDuplicates = function(head) {
         //Write your code here
         let current = head;
-        while (current.next) {
-            if (current.data == current.next.data) {
-                current.next = current.next.next;
-            } else {
-                current = current.next;
-            }
-        }
+        while (current.next)
+            current.data === current.next.data
+                ? (current.next = current.next.next)
+                : (current = current.next);
         return head;
     };
 
     this.insert = function(head, data) {
-        var p = new Node(data);
-        if (head == null) {
-            head = p;
-        } else if (head.next == null) {
-            head.next = p;
-        } else {
-            var start = head;
-            while (start.next != null) {
-                start = start.next;
-            }
-            start.next = p;
+        if (head == null) return new Node(data);
+
+        let start = head;
+        while (start.next != null) {
+            start = start.next;
         }
+        start.next = new Node(data);
         return head;
     };
 
