@@ -18,9 +18,9 @@ function getTotalX(a, b) {
     let validCount = 0;
 
     for (let x = Math.max(...a); x <= Math.min(...b); x++) {
-        if (a.every(num => x % num == 0)) {
-            if (b.every(num => num % x == 0)) {
-                validCount++;
+        if (a.every(num => x % num === 0)) {
+            if (b.every(num => num % x === 0)) {
+                validCount += 1;
             }
         }
     }
