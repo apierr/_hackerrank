@@ -3,10 +3,11 @@
 function dynamicArray(n, queries) {
     let lastAns = 0;
     let seqList = Array(n).fill(null);
+    let results = [];
 
-    console.log(queries, seqList);
+    // console.log(queries, seqList);
     queries.forEach(v => {
-        const [type, x, y] = [v[0], v[1], v[2]];
+        const [type, x, y] = v;
         const index = (x ^ lastAns) % n;
         if (type === 1) {
             if (seqList[index] === null) {
@@ -18,9 +19,10 @@ function dynamicArray(n, queries) {
             }
         } else {
             lastAns = seqList[index][y % seqList[index].length];
-            console.log(lastAns);
+            results.push(lastAns);
         }
     });
+    return results;
 }
 
 function main() {
@@ -31,7 +33,7 @@ function main() {
 2 1 0
 2 1 1`;
     queries = input.split("\n").map(v => v.split(" ").map(Number));
-    dynamicArray(2, queries);
+    console.log(dynamicArray(2, queries).join("\n") + "\n");
 }
 
 main();

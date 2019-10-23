@@ -15,6 +15,15 @@
  */
 
 function getTotalX(a, b) {
+    const [max_a, min_b] = [Math.max(...a), Math.min(...b)];
+    const integers = Array(min_b - max_a).from(
+        { length: min_b - max_a + 1 },
+        (_, id) => id + max_a
+    );
+    return integers.filter(
+        v => a.every(num => v % num === 0) && b.every(num => num % v === 0)
+    ).length;
+
     let validCount = 0;
 
     for (let x = Math.max(...a); x <= Math.min(...b); x++) {
@@ -29,8 +38,8 @@ function getTotalX(a, b) {
 }
 
 function main() {
-    const s1 = [2, 4];
-    const s2 = [16, 32, 96];
-    console.log(getTotalX(s1, s2)); // -> 3
+    const a = [2, 4];
+    const b = [16, 32, 96];
+    console.log(getTotalX(a, b)); // -> 3
 }
 main();

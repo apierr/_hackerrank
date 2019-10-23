@@ -5,10 +5,9 @@
 // Complete the breakingRecords function below.
 function breakingRecords(scores) {
     let [bests, worsts] = [[scores[0]], [scores[0]]];
-
-    scores.forEach(element => {
-        if (element > bests.slice(-1)) bests.push(element);
-        if (element < worsts.slice(-1)) worsts.push(element);
+    scores.forEach(score => {
+        if (score > bests.slice(-1)) bests.push(score);
+        if (score < worsts.slice(-1)) worsts.push(score);
     });
     return [bests.length - 1, worsts.length - 1];
 }
