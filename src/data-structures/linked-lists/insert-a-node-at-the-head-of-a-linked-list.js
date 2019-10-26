@@ -1,4 +1,6 @@
-"use strict";
+// You’re given the pointer to the head node of a linked list and an integer to add to the list. Create a new node with the given integer, insert this node at the head of the linked list and return the new head node. The head pointer given may be null meaning that the initial list is empty.
+
+// head = |data, next| -> |data, next| -> |data, next| = tail
 
 const SinglyLinkedListNode = class {
     constructor(nodeData) {
@@ -35,15 +37,8 @@ function printSinglyLinkedList(node, sep, ws) {
  */
 
 function insertNodeAtHead(head, data) {
-    const pNewNode = new SinglyLinkedListNode(data);
-
-    if (head == null) {
-        head = pNewNode;
-        return head;
-    } else {
-        pNewNode.next = head;
-        return pNewNode;
-    }
+    const node = new SinglyLinkedListNode(data);
+    return head === null ? node : (node.next = head) && node;
 }
 
 function main() {
