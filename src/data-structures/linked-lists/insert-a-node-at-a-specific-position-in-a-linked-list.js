@@ -45,17 +45,17 @@ function printSinglyLinkedList(node) {
  *
  */
 function insertNodeAtPosition(head, data, position) {
-    let currNode = head;
-    for (let i = 1; i < position; i++) currNode = currNode.next;
-    const newNode = new SinglyLinkedListNode(data);
-    newNode.next = currNode.next;
-    currNode.next = newNode;
+    let currentHead = head;
+    for (let i = 1; i < position; i++) currentHead = currentHead.next;
+    let newNode = new SinglyLinkedListNode(data);
+    newNode.next = currentHead.next;
+    currentHead.next = newNode;
     return head;
 }
 
 function main() {
     let llist = new SinglyLinkedList();
-    const [llistItems, data, position] = [[16, 13, 7], 1, 2]; // -> 16 13 1 7
+    const [llistItems, data, position] = [[16, 13, 7, 11], 1, 2]; // -> 16 13 1 7 11
     llistItems.forEach(v => llist.insertNode(v));
 
     let llist_head = insertNodeAtPosition(llist.head, data, position);
