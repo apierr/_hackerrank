@@ -39,7 +39,7 @@ const SinglyLinkedList = class {
  *
  */
 function printLinkedList(head) {
-    if (head !== null) {
+    if (head) {
         console.log(head.data);
         printLinkedList(head.next);
     }
